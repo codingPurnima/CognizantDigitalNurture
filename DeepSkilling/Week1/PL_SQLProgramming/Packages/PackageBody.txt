@@ -1,0 +1,36 @@
+CREATE OR REPLACE PACKAGE BODY CustomerManagement AS
+
+    PROCEDURE AddCustomer(
+        cid NUMBER,
+        cname VARCHAR2,
+        dob DATE,
+        bal NUMBER
+    ) IS
+    BEGIN
+        INSERT INTO Customers VALUES(cid, cname, dob, bal, SYSDATE);
+    END;
+
+    PROCEDURE UpdateCustomer(
+        cid NUMBER,
+        newbal NUMBER
+    ) IS
+    BEGIN
+        UPDATE Customers
+        SET Balance = newbal
+        WHERE CustomerID = cid;
+    END;
+
+    FUNCTION GetBalance(cid NUMBER)
+    RETURN NUMBER
+    IS
+        bal NUMBER;
+    BEGIN
+        SELECT Balance INTO bal
+        FROM Customers
+        WHERE CustomerID = cid;
+
+        RETURN bal;
+    END;
+
+END CustomerManagement;
+/

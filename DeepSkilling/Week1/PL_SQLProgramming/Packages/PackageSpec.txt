@@ -1,0 +1,18 @@
+CREATE OR REPLACE PACKAGE CustomerManagement AS
+
+    PROCEDURE AddCustomer(
+        cid NUMBER,
+        cname VARCHAR2,
+        dob DATE,
+        bal NUMBER
+    );
+
+    PROCEDURE UpdateCustomer(
+        cid NUMBER,
+        newbal NUMBER
+    );
+
+    FUNCTION GetBalance(cid NUMBER) RETURN NUMBER;
+
+END CustomerManagement;
+/
