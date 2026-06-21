@@ -1,0 +1,7 @@
+Operation- TC
+Add - O(1)
+Update- O(1)
+Delete- O(1)
+Optimization:
+Use HashMap indexing (already optimal)
+Use database indexing for large systems

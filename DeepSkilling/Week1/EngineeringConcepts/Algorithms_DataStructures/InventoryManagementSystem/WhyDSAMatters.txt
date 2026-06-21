@@ -1,0 +1,8 @@
+Large inventories require:
+Fast search (finding products quickly)
+Fast updates (quantity changes frequently)
+Efficient storage (avoid duplication)
+
+Suitable Data Structures:
+HashMap - best for fast add/update/delete by productId (O(1))
+ArrayList - good for iteration, slow search (O(n))
