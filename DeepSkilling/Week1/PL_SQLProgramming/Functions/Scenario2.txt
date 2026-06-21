@@ -1,0 +1,13 @@
+CREATE OR REPLACE FUNCTION CalculateMonthlyInstallment(
+    p NUMBER,
+    r NUMBER,
+    n NUMBER
+)
+RETURN NUMBER
+AS
+    emi NUMBER;
+BEGIN
+    emi := (p + (p * r/100)) / (n * 12);
+    RETURN emi;
+END;
+/
