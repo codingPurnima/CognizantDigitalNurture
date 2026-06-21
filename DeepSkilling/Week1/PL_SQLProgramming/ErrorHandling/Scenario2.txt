@@ -1,0 +1,30 @@
+CREATE OR REPLACE PROCEDURE UpdateSalary(
+    emp_id NUMBER,
+    percent NUMBER
+)
+AS
+    emp_not_found EXCEPTION;
+    count_emp NUMBER;
+BEGIN
+
+    SELECT COUNT(*) INTO count_emp
+    FROM Employees
+    WHERE EmployeeID = emp_id;
+
+    IF count_emp = 0 THEN
+        RAISE emp_not_found;
+    END IF;
+
+    UPDATE Employees
+    SET Salary = Salary + (Salary * percent/100)
+    WHERE EmployeeID = emp_id;
+
+    COMMIT;
+
+EXCEPTION
+    WHEN emp_not_found THEN
+        DBMS_OUTPUT.PUT_LINE('Employee not found');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error occurred');
+END;
+/

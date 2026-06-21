@@ -1,0 +1,38 @@
+CREATE OR REPLACE PROCEDURE SafeTransferFunds(
+    from_acc NUMBER,
+    to_acc NUMBER,
+    amt NUMBER
+)
+AS
+    insufficient_balance EXCEPTION;
+    bal NUMBER;
+BEGIN
+
+    SELECT Balance INTO bal
+    FROM Accounts
+    WHERE AccountID = from_acc;
+
+    IF bal < amt THEN
+        RAISE insufficient_balance;
+    END IF;
+
+    UPDATE Accounts
+    SET Balance = Balance - amt
+    WHERE AccountID = from_acc;
+
+    UPDATE Accounts
+    SET Balance = Balance + amt
+    WHERE AccountID = to_acc;
+
+    COMMIT;
+
+EXCEPTION
+    WHEN insufficient_balance THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Insufficient Funds');
+        ROLLBACK;
+
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Unexpected Error Occurred');
+        ROLLBACK;
+END;
+/

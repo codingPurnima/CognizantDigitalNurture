@@ -1,0 +1,30 @@
+CREATE OR REPLACE PROCEDURE AddNewCustomer(
+    cid NUMBER,
+    cname VARCHAR2,
+    dob DATE,
+    bal NUMBER
+)
+AS
+    duplicate EXCEPTION;
+    cnt NUMBER;
+BEGIN
+
+    SELECT COUNT(*) INTO cnt
+    FROM Customers
+    WHERE CustomerID = cid;
+
+    IF cnt > 0 THEN
+        RAISE duplicate;
+    END IF;
+
+    INSERT INTO Customers VALUES (cid, cname, dob, bal, SYSDATE);
+
+    COMMIT;
+
+EXCEPTION
+    WHEN duplicate THEN
+        DBMS_OUTPUT.PUT_LINE('Customer already exists');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error occurred');
+END;
+/
