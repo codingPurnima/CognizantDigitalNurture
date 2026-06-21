@@ -1,0 +1,11 @@
+CREATE OR REPLACE TRIGGER CheckTransactionRules
+BEFORE INSERT ON Transactions
+FOR EACH ROW
+BEGIN
+
+    IF :NEW.Amount <= 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Amount must be positive');
+    END IF;
+
+END;
+/
