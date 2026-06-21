@@ -1,0 +1,8 @@
+Operation	Complexity
+Add- O(1)
+Search- O(n)
+Delete- O(n)
+
+Limitation:
+Fixed size
+Slow search/delete
