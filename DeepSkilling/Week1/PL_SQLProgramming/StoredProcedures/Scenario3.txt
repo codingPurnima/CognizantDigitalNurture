@@ -1,0 +1,24 @@
+CREATE OR REPLACE PROCEDURE TransferFunds(
+    from_acc NUMBER,
+    to_acc NUMBER,
+    amt NUMBER
+)
+AS
+    bal NUMBER;
+BEGIN
+
+    SELECT Balance INTO bal
+    FROM Accounts
+    WHERE AccountID = from_acc;
+
+    IF bal < amt THEN
+        DBMS_OUTPUT.PUT_LINE('Insufficient Balance');
+        RETURN;
+    END IF;
+
+    UPDATE Accounts SET Balance = Balance - amt WHERE AccountID = from_acc;
+    UPDATE Accounts SET Balance = Balance + amt WHERE AccountID = to_acc;
+
+    COMMIT;
+END;
+/
