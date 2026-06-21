@@ -1,0 +1,5 @@
+Algorithm	Time
+Bubble Sort- O(n²)
+Quick Sort- O(n log n)
+
+Quick Sort is faster → preferred
