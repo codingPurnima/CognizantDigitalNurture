@@ -1,0 +1,8 @@
+Big O Notation
+Measures algorithm efficiency
+Focuses on worst-case growth
+
+Search cases:
+Best: O(1)
+Average: O(n)
+Worst: O(n)

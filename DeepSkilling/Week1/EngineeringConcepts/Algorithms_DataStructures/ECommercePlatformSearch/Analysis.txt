@@ -1,0 +1,7 @@
+Search	Complexity
+Linear	O(n)
+Binary	O(log n)
+
+Best choice:
+Small data → Linear
+Large sorted data → Binary
