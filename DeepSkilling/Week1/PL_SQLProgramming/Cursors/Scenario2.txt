@@ -1,0 +1,10 @@
+BEGIN
+    FOR rec IN (SELECT AccountID FROM Accounts) LOOP
+
+        UPDATE Accounts
+        SET Balance = Balance - 500
+        WHERE AccountID = rec.AccountID;
+
+    END LOOP;
+END;
+/

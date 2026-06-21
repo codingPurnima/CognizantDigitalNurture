@@ -1,0 +1,10 @@
+BEGIN
+    FOR rec IN (SELECT LoanID, InterestRate FROM Loans) LOOP
+
+        UPDATE Loans
+        SET InterestRate = InterestRate + 0.5
+        WHERE LoanID = rec.LoanID;
+
+    END LOOP;
+END;
+/
