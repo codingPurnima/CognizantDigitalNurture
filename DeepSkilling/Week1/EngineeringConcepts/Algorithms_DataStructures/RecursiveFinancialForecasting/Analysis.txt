@@ -1,0 +1,5 @@
+Algorithm	Time
+Linear- O(n)
+Binary- O(log n)
+
+Use binary when sorted
