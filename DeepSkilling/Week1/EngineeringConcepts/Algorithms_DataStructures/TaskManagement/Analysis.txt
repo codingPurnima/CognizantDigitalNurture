@@ -1,0 +1,6 @@
+Operation	Complexity
+Add- O(n)
+Search- O(n)
+Delete- O(n)
+
+Advantage over array: dynamic size
